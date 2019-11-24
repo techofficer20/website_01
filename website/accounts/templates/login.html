@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <title>로그인</title>
+</head>
+<body>
+    {% if error %}
+    {{ error }}
+    {% endif %}
+    <h2>로그인</h2>
+    <p>계정이 없으십니까? <a href = "{% url 'register' %}">등록하기</a></p>
+    <form action = "{% url 'login' %}" method = "POST">
+        {% csrf_token %}
+        <input type = "text" name = "username" placeholder = "username" />
+        <br/>
+        <br/>
+        <input type = "password" name = "password" placeholder = "password" />
+        <br/>
+        <br/>
+        <input type = "submit" value = "로그인" />
+    </form>
+</body>
+{% endblock %}

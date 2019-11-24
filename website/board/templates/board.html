@@ -5,5 +5,15 @@
 </head>
 <body>
     <h2>This is Board.</h2>
+    {% if user.is_authenticated %}
+    <p>{{ user.username }} 접속 중</p>
+    <p><a href = "javascript:{document.getElementById('logout').submit()}">로그아웃</a></p>
+    <form id = "logout" method = "POST" action = "{% url 'logout' %}">
+        {% csrf_token %}
+        <input type = "hidden" />
+    </form>
+    {% else %}
+    <p><a href = "{% url 'login' %}">로그인하기</a></p>
+    {% endif %}
 </body>
 {% endblock %}

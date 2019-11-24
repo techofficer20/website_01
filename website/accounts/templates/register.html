@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <title>등록</title>
+</head>
+<body>
+    {% if error %}
+    {{ error }}
+    {% endif %}
+    <h2>회원가입</h2>
+    <form action = "{% url 'register' %}" method = "POST">
+        {% csrf_token %}
+        <input type = "text" name = "username" placeholder = "username" />
+        <br/>
+        <br/>
+        <input type = "password" name = "password" placeholder = "password" />
+        <br/>
+        <br/>
+        <input type = "submit" value = "등록" />
+    </form>
+</body>
+{% endblock %}
