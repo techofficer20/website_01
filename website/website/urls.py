@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('board/', include('board.urls')),
     path('accounts/', include('accounts.urls')),
+    path('<str:username>/info/', accounts.views.info, name='info'), # info url을 localhost:8000/<username>/info/ 이런 식으로 하기 위해서
 ]

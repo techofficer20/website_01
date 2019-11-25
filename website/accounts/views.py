@@ -36,3 +36,7 @@ def logout(request):
         return redirect('board')
     else:
         return render(request, 'register.html')
+
+def info(request, username):
+    user = User.objects.get(username = username)
+    return render(request, 'info.html', {'person' : user})

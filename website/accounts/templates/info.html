@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <title>{{ person }}</title>
+</head>
+<body>
+    <h2>회원 정보</h2>
+    {% if user.is_authenticated and user == person %}
+    <p>ID: {{ user.username }}</p>
+        {% for contents in user.writes.all %}
+        <li>{{contents.title}}</li>
+        {% endfor %}
+    {% else %} 
+    <!-- 로그인하지 않았을 경우, 주인 이외의 계정으로 로그인했을 경우 수정 및 탈퇴 불가능 -->
+    <p>ID : {{ person }}</p>
+    {% endif %}
+</body>
+{% endblock %}

@@ -7,6 +7,7 @@
     <h2>This is Board.</h2>
     {% if user.is_authenticated %}
     <p>{{ user.username }} 접속 중</p>
+    <p><a href = "{% url 'info' user.username%}">🙂info</a></p>
     <p><a href = "javascript:{document.getElementById('logout').submit()}">로그아웃</a></p>
     <form id = "logout" method = "POST" action = "{% url 'logout' %}">
         {% csrf_token %}
