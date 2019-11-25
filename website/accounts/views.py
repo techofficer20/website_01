@@ -8,7 +8,7 @@ def register(request):
         # User has info and wants an account now!
         try:
             user = User.objects.get(username = request.POST['username'])
-            return render(request, 'register.html', {'error' : 'Username has a already been taken.'})
+            return render(request, 'register.html', {'error' : '해당 ID로는 회원가입 할 수 없습니다. 사용자가 이미 존재합니다.'})
         except User.DoesNotExist:
             user = User.objects.create_user(username = request.POST['username'], password = request.POST['password'])
             auth.login(request, user)
@@ -26,7 +26,7 @@ def login(request):
             auth.login(request, user)
             return redirect('board')
         else:
-            return render(request, 'login.html', {'error' : 'username or password is incorrect.'})
+            return render(request, 'login.html', {'error' : 'ID나 비밀번호가 틀립니다.'})
     else:
         return render(request, 'login.html')
 
