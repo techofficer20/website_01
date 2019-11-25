@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <title>ChangeInfo</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <h2>정보 수정</h2>
+    <div class = "error_message">
+        {{ error }} <!-- 한 번에 제출 후 오류가 있을 경우 error를 가지고 return -->
+    </div>
+    <ul>
+        <li>
+            비밀번호 변경
+            <form action = "{% url 'changeInfo' %}" method = "POST">
+                <br/>
+                {% csrf_token %}
+                기존 비밀번호:
+                <br/>
+                <input type = "password" name= "origin_password"/>
+                <br/>
+                <br/>
+                변경 비밀번호:
+                <br/>
+                <input type = "password" name= "new_password1">
+                <br/>
+                <br/>
+                변경 비밀번호 확인:
+                <br/>
+                <input type = "password" name= "new_password2">
+                <br/>
+                <br/>
+                <input type = "submit" value = "변경">
+            </form>
+        </li>
+    </ul>
+    {% else %}
+    {% endif %}
+{% endblock %}

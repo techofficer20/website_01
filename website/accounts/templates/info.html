@@ -10,6 +10,12 @@
         {% for contents in user.writes.all %}
         <li>{{contents.title}}</li>
         {% endfor %}
+    <p><a href = "{% url 'changeInfo' %}">정보 수정하기</a></p>
+    <p><a href = "javascript:{document.getElementById('deleteMe').submit()}">❌탈퇴하기</a></p>
+    <form id = "deleteMe" method = "POST" action = "{% url 'deleteMe' %}">
+        {% csrf_token %}
+        <input type="hidden" />
+    </form>
     {% else %} 
     <!-- 로그인하지 않았을 경우, 주인 이외의 계정으로 로그인했을 경우 수정 및 탈퇴 불가능 -->
     <p>ID : {{ person }}</p>
