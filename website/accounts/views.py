@@ -45,7 +45,17 @@ def info(request, username):
 
 def changeInfo(request):
     context = {}
+
+    #if request.method == 'GET':
+        # change Username
+        # new_username = request.GET.get('new_username')
+        # user = request.user
+        # user.username = new_username
+        # user.save()
+        #return redirect('board')
+
     if request.method == 'POST':
+        # change Password
         current_password = request.POST['origin_password']
         user = request.user
         if check_password(current_password, user.password):

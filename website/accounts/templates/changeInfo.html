@@ -11,18 +11,31 @@
     </div>
     <ul>
         <li>
+            유저 이름 변경
+            <form action = "{% url 'changeInfo' %}" method = "GET">
+                <br/>
+                {% csrf_token %}
+                <input type = "text" name = "new_username" placeholder = "new ID" />
+                <br/>
+                <br/>
+                <input type = "submit" value = "변경" />
+                <br/>
+                <br/>
+            </form>
+        </li>
+        <li>
             비밀번호 변경
             <form action = "{% url 'changeInfo' %}" method = "POST">
                 <br/>
                 {% csrf_token %}
                 기존 비밀번호:
                 <br/>
-                <input type = "password" name= "origin_password"/>
+                <input type = "password" name = "origin_password"/>
                 <br/>
                 <br/>
                 변경 비밀번호:
                 <br/>
-                <input type = "password" name= "new_password1">
+                <input type = "password" name = "new_password1">
                 <br/>
                 <br/>
                 변경 비밀번호 확인:
